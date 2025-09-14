@@ -1,5 +1,6 @@
 # Project Workflow
 ![main](Website/overview1.svg)
+![main](Website/overview2.svg)
 ## 1. Training
 (Coming soon)
 ## 2. Evaluating
