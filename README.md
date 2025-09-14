@@ -2,7 +2,41 @@
 ![main](Website/overview1.svg)
 ![main](Website/overview2.svg)
 ## 1. Training
-(Coming soon)
+#### File Preparation Guide for Gene Expression Prediction Training
+This document outlines the required data files and directory structure for running the gene expression prediction training script. Ensure the following files and directories are properly prepared before execution.
+
+1. Reference CSV File
+Path:
+
+**`/backup/lgx/path_omics_t/data/reference/dependency/{cancer_type}_ref.csv`**
+
+(Replace {cancer_type} with your target cancer type, e.g., BLCA_ref.csv)
+
+Format:
+
+First Column: patient_id (unique patient identifier)
+Subsequent Columns: Gene expression values (one column per gene)
+Headers: Gene names
+Example:
+```
+data/
+├── reference/
+│   └── dependency/               # Reference CSVs
+│       ├── BLCA_ref.csv
+│       └── ...
+└── result/
+    └── cluster/                  # Extracted features
+        ├── vit/                  # e.g., ViT features
+        │   └── BLCA/             # Cancer type
+        │       ├── patient_1.h5
+        │       └── ...
+        └── resnet/               # e.g., ResNet features
+            └── BLCA/
+                └── ...
+logs/                             # Auto-generated during runtime
+script/                           # Source code modules (provided)
+
+```
 ## 2. Evaluating
 (Coming soon)
 ## 3. Predicting
