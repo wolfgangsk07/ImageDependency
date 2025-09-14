@@ -33,7 +33,7 @@ from sklearn.cluster import KMeans
 from src.agentAttention import AgentAttention
 
 
-min_Patch=100
+min_Patch=900
     
 def get_mask_image(img_RGB, RGB_min=50):
     img_HSV = rgb2hsv(img_RGB)
