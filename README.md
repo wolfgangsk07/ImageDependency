@@ -120,15 +120,15 @@ CSV Columns (all_genes.csv):
 ## 3. Predicting
 This script processes whole-slide images (WSI) in SVS format to predict gene expression patterns. The pipeline involves:
 
-Tissue segmentation and patch extraction
+*Tissue segmentation and patch extraction*
 
-Color normalization using Macenko's method
+*Color normalization using Macenko's method*
 
-Feature extraction with a Vision Transformer (ViT)
+F*eature extraction with a Vision Transformer (ViT)*
 
-Feature clustering
+*Feature clustering*
 
-Gene expression prediction using an ensemble of AgentAttention models
+*Gene expression prediction using an ensemble of AgentAttention models*
 
 All predicting processes are implemented in a single Python script svsToExpr.py:
 
