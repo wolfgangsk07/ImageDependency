@@ -1,11 +1,10 @@
-# Project Workflow
+
 ![main](Website/overview1.svg)
 ![main](Website/overview2.svg)
-## 1. Training
-### File Preparation Guide for Gene Expression Prediction Training
+# 1. Training
 This document outlines the required data files and directory structure for running the gene expression prediction training script. Ensure the following files and directories are properly prepared before execution.
 
-#### 1. Reference CSV File
+### 1. Reference CSV File
 Path:
 
 **`/backup/lgx/path_omics_t/data/reference/dependency/{cancer_type}_ref.csv`**
@@ -26,7 +25,7 @@ patient_2,0.91,0.75,...
 
 ```
 
-#### 2. Feature Files
+### 2. Feature Files
 Directory:
 
 /yourworkspace/data/result/cluster/{extraction_model}/{cancer_type}/
@@ -41,7 +40,7 @@ num_clusters: Number of superpixel clusters (e.g., 900).
 feature_dim: Dimensionality of extracted features (e.g., 1024 for ViT).
 Consistency: All files must use identical feature_dim and storage format.
 
-#### 3. Directory Structure
+### 3. Directory Structure
 Organize directories as follows under /yourworkspace:
 
 ```
@@ -63,16 +62,16 @@ logs/                             # Auto-generated during runtime
 script/                           # Source code modules (provided)
 
 ```
-## 2. Evaluating
+# 2. Evaluating
 This script analyzes predictive performance of gene expression models using multi-fold cross-validation results. It computes correlation metrics, statistical significance, and error measurements to evaluate model performance against random baselines.
-#### 1. Input Data Requirements
+### 1. Input Data Requirements
 Core Input File:
 
 test_results.pkl (Generated from Training step).
 
 Located at: /yourworkspace/data/result/model/<extraction_model>/<prediction_type>/<cancer_type>/test_results.pkl
 
-#### 2. Directory Structure Requirements
+### 2. Directory Structure Requirements
 ```
 /yourworkspace/
 ├── data/
@@ -85,7 +84,7 @@ Located at: /yourworkspace/data/result/model/<extraction_model>/<prediction_type
 │                       └── result/  # Auto-created output directory
 
 ```
-#### 3. Output Files
+### 3. Output Files
 Generated in .../cancer_type/result/ directory:
 
 Matrices:
@@ -117,7 +116,7 @@ CSV Columns (all_genes.csv):
 | cancer             | Cancer type identifier                       |
 
 
-## 3. Predicting
+# 3. Predicting
 This script processes whole-slide images (WSI) in SVS format to predict gene expression patterns. The pipeline involves:
 
 *Tissue segmentation and patch extraction*
@@ -140,12 +139,12 @@ The order of output genes are defined in R/outputgenes.txt
 
 ---
 
-## 4. Website Implementation
+# 4. Website Implementation
 
 This repository contains the source code for:  
 **https://www.hbpding.com/ImageDependency/**
 
-#### Deployment Recommendations
+### Deployment Recommendations
 - **Server**: Apache2 on Debian
 - **Environment**: Python3 required:
 Linux:
