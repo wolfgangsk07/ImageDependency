@@ -131,10 +131,8 @@ result = process_svs_to_expression("./", "test.svs", "BRCA")
 ## run_expression_alignment_CPTACDEPMAP.R
 This script performs transcriptional profile alignment between CPTAC tumor samples and DepMap cell lines using methods adapted from Celligner. Key steps include quantile normalization, initial clustering, differential gene analysis, contrastive PCA (cPCA), and Mutual Nearest Neighbors (MNN) correction. The output is an integrated gene expression matrix for downstream analysis.
 
-### Dependencies
-**R Packages:** Seurat (v4.4.0+), dplyr, preprocessCore, data.table  
 
-**Input Files:**  
+### Input Files
 - Tumor data: `./data/pancan_merged_CPTAC_RNAseq_Tumor.tsv`  
 - Cell line data: `./data/CCLE_expression_full.csv` (DepMap)  
 - Gene annotation: `./hgnc_complete_set_7.24.2018.txt`  
