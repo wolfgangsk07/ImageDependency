@@ -100,14 +100,6 @@ all_genes.csv - Full analysis for all genes (columns described below)
 
 sig_genes.csv - Statistically significant genes subset
 
-Diagnostic Files:
-
-analysis_report.txt - Performance summary report
-
-{cancer}_{type}_analysis_{timestamp}.log - Execution log
-
-{type}_temp_results.csv - Intermediate results (if interrupted)
-
 CSV Columns (all_genes.csv):
 
 | Column             | Description                                  |
@@ -126,6 +118,17 @@ CSV Columns (all_genes.csv):
 
 
 ## 3. Predicting
+This script processes whole-slide images (WSI) in SVS format to predict gene expression patterns. The pipeline involves:
+
+Tissue segmentation and patch extraction
+
+Color normalization using Macenko's method
+
+Feature extraction with a Vision Transformer (ViT)
+
+Feature clustering
+
+Gene expression prediction using an ensemble of AgentAttention models
 
 All predicting processes are implemented in a single Python script svsToExpr.py:
 
@@ -133,7 +136,7 @@ All predicting processes are implemented in a single Python script svsToExpr.py:
 from svsToExpr import process_svs_to_expression
 result=process_svs_to_expression("./","test.svs","BRCA")
 ```
-The order of output are defined in R/outputgenes.txt
+The order of output genes are defined in R/outputgenes.txt
 
 ---
 
@@ -142,7 +145,7 @@ The order of output are defined in R/outputgenes.txt
 This repository contains the source code for:  
 **https://www.hbpding.com/ImageDependency/**
 
-### Deployment Recommendations
+#### Deployment Recommendations
 - **Server**: Apache2 on Debian
 - **Environment**: Python3 required:
 Linux:
