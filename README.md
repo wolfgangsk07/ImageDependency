@@ -1,5 +1,5 @@
 # Project Workflow
-![main](Websit/overview1.svg)
+![main](https://github.com/wolfgangsk07/ImageDependency/Website/overview1.svg)
 ## 1. Training
 (Coming soon)
 ## 2. Evaluating
