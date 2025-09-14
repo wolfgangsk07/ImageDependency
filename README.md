@@ -159,6 +159,7 @@ This repository contains the source code for:
 ### Deployment Recommendations
 - **Server**: Apache2 on Debian
 - **Environment**: Python3 required:
+
 Linux:
 ```
 sudo apt-get install openslide-tools
