@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageDependency</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <script>
+        document.write("<link rel='stylesheet' type='text/css' href='css/analyse.css'>");
+		document.write("<link rel='stylesheet' type='text/css' href='css/register.css'>");
+		document.write("<link rel='stylesheet' type='text/css' href='css/sidebar.css'>");
+		document.addEventListener('DOMContentLoaded', function() {
+			fetch('./api/users/check_login.php')
+				.then(response => response.json())
+				.then(data => {
+					if (data.isLoggedIn) {
+						const userElement = document.querySelector('.user-auth');
+						userElement.innerHTML = `
+							<span id="userInfo" style="display:none" data-userid="${data.user.id}"></span>
+							<span class="welcome-msg">Welcome, ${data.user.email}</span>
+							<button id="logoutBtn">Logout</button>
+						`;
+						document.getElementById('logoutBtn').addEventListener('click', function() {
+							fetch('./api/users/logout.php').then(() => location.reload());
+						});
+					}
+				});
+		});
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src=logo2.svg style='height:45px;'>
+                <h1>Image Dependency</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#docs">Documents</a>
+            </nav>
+			<div class="user-auth">
+				<span id="userInfo" style="display:none" data-userid=""></span>
+				<button id="loginBtn">Login</button>
+				<button id="registerBtn">Register</button>
+			</div>
+        </div>
+    </header>
+    
+    
+    <div id="main" class="main-layout">
+		<div class="history-sidebar">
+
+			<h3 class="sidebar-header">
+				<i class="fas fa-history"></i>
+				<span>History</span>
+				<button id="newTaskBtn" class="new-task-btn"><i class="fas fa-plus"></i> New</button>
+			</h3>
+			<div class="history-list" id="historyList">
+				<div class="no-history">Please login to view history</div>
+			</div>
+		</div>
+		<div class="container" taskuuid="" id="taskContainer">
+			<!-- Upload Section -->
+			<section id="upload" class="upload-section">
+				
+				<div class="upload-info">
+					<div class="form-group">
+						<label for="taskName">Custom Task Name:</label>
+						<input type="text" id="taskName" placeholder="Name this analysis task (optional)">
+					</div>
+				</div>
+				<h2 class="section-title">Upload Pathological Slice Files</h2>
+				<div class="upload-container" id="uploadArea">
+					<i class="fas fa-cloud-upload-alt upload-icon"></i>
+					<p class="upload-text">Click or drag files here to upload</p>
+					<input type="file" id="fileInput" multiple accept=".svs" style="display:none">
+					<button class="upload-btn" id="selectFilesBtn">Select Files</button>
+					<p class="file-types">Supported format: <span>.svs</span></p>
+					<p>You can get a  Ovary cancer SVS from TCGA for test: <a href=https://api.gdc.cancer.gov/data/71bbd801-ca6e-4517-a2c9-cd6ec31c2552>TCGA-25-2390-01Z-00-DX1</a></p>
+				</div>
+				<div class="upload-info">
+					
+					
+					
+					<div id="fileList" class="file-list"> 
+						<div class="empty-hint">No SVS files uploaded yet</div>
+					</div>
+					<div class="form-group">
+						<label for="cancerSelect">Select Cancer Type of your slide(s):</label>
+						<select id="cancerSelect" class="cancer-select">
+							<option value="">Please select:</option>
+							<option value="BLCA">BLCA</option>
+							<option value="BRCA">BRCA</option>
+							<option value="CESC">CESC</option>
+							<option value="COAD">COAD</option>
+							<option value="ESCA">ESCA</option>
+							<option value="HNSC">HNSC</option>
+							<option value="KIRC">KIRC</option>
+							<option value="KIRP">KIRP</option>
+							<option value="LGG">LGG</option>
+							<option value="LIHC">LIHC</option>
+							<option value="LUAD">LUAD</option>
+							<option value="LUSC">LUSC</option>
+							<option value="PAAD">PAAD</option>
+							<option value="PCPG">PCPG</option>
+							<option value="PRAD">PRAD</option>
+							<option value="SARC">SARC</option>
+							<option value="SKCM">SKCM</option>
+							<option value="STAD">STAD</option>
+							<option value="TGCT">TGCT</option>
+							<option value="THCA">THCA</option>
+							<option value="THYM">THYM</option>
+							<option value="UCEC">UCEC</option>
+							<!-- 可以继续添加其他癌种选项 -->
+						</select>
+					</div>
+					<div id="cancerType" style="display:none" data-cancer=""></div>
+				</div>
+				<button class="submit-btn">Start Analysis</button>
+			</section>
+			
+			<!-- Results Section -->
+			<section id="results" style='display:none'>
+				
+				<div class="results-section">
+				<h2 class="section-title">Analysis Results</h2>
+					<!-- 结果内容将动态加载 -->
+				</div>
+			</section>
+			
+			<!-- Documentation Section -->
+			<section id="docs" class="documentation">
+				<h2 class="section-title">Documents</h2>
+				<div class="tabs">
+					<div class="tab active" data-tab="instructions">Instructions</div>
+					<div class="tab" data-tab="reference">Citation</div>
+				</div>
+				
+				 <div class="tab-content active" id="instructions-content">
+                    <h3>Platform Workflow</h3>
+                    <p>This platform transforms routine H&E slides into cancer vulnerability maps using our patented Agent Attention framework:</p>
+                    
+                    <div class="workflow-steps">
+                        <div class="step">
+                            <h4>1. Upload SVS Slides</h4>
+                            <p>Upload whole-slide images in SVS format</p>
+                        </div>
+                        <div class="step">
+                            <h4>2. Select Cancer Type</h4>
+                            <p>Choose the appropriate cancer type for molecular context</p>
+                        </div>
+                        <div class="step">
+                            <h4>3. Agent Attention Analysis</h4>
+                            <p>Our deep learning model processes slides into gene expression profiles</p>
+                        </div>
+                        <div class="step">
+                            <h4>4. Vulnerability Mapping</h4>
+                            <p>Heatmaps highlight therapeutic vulnerabilities and dependencies</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Technical Specifications</h3>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <h4>Slide Requirements</h4>
+                            <ul>
+                                <li>Formats: .svs (Aperio)</li>
+                                <li>Resolution: 40x magnification recommended</li>
+                                <li>Stain: H&E only</li>
+                            </ul>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Model Architecture</h4>
+                            <ul>
+                                <li>Agent Attention Transformer</li>
+                                <li>Pre-trained on 7,500+ TCGA slides</li>
+                                <li>Pan-cancer generalizability</li>
+                            </ul>
+                        </div>
+                        <div class="spec-item">
+                            <h4>Output Files</h4>
+                            <ul>
+                                <li>Heatmap visualization (JPG, PDF)</li>
+                                <li>Gene expression matrix (TXT)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="tab-content" id="reference-content">
+					
+					
+					<h3>Citation</h3>
+					<p>Reference our work in your research</p>
+					
+					<div class="citation">
+						Dongyi Wan, Tongtong Liu, Zhao Huang, Wanguang Zhang, Ganxun Li (2025) : Digital profiling of pan-cancer vulnerability maps from routine histopathology with agent attention., 0(0), 0000.
+					</div>
+					
+					<p>GitHub Repository: <a href="https://github.com/wolfgangsk07/ImageDependency.git" style="color: var(--primary);">github.com/wolfgangsk07/ImageDependency</a></p>
+				</div>
+				
+				
+			</section>
+
+		</div>
+    </div>
+    
+    <div id="authModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2 id="modalTitle">注册账号</h2>
+			<div id="modalForm">
+				<!-- 动态加载注册/登录表单 -->
+			</div>
+		</div>
+	</div>
+	<div id="cancerModal" class="modal">
+		<div class="modal-content">
+			<span class="close close-cancer">&times;</span>
+			<h2>选择癌种</h2>
+			<div class="cancer-list">
+				<div class="cancer-item" data-cancer="BRCA">BRCA</div>
+				<div class="cancer-item" data-cancer="LUAD">LUAD</div>
+			</div>
+		</div>
+	</div>
+    <script>
+        document.write("<script type='text/javascript' src='js/login.js'><\/script>");
+		document.write("<script type='text/javascript' src='js/register.js'><\/script>");
+		document.write("<script type='text/javascript' src='js/index.js'><\/script>");
+		document.write("<script type='text/javascript' src='js/sidebar.js'><\/script>");
+    </script>
+</body>
+</html>

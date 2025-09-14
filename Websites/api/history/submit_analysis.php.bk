@@ -1,0 +1,81 @@
+<?php
+require_once __DIR__ . '/../../includes/db.php';
+require_once __DIR__ . '/../../includes/utils.php';
+
+header('Content-Type: application/json');
+
+// 获取POST数据
+$data = json_decode(file_get_contents('php://input'), true);
+$userId = $data['user_id'] ?? 0;
+$taskId = $data['task_id'] ?? '';
+$taskName = $data['task_name'] ?? '';
+$cancerType = $data['cancer_type'] ?? 'unknown';
+
+if (empty($taskId) || empty($userId)) {
+    echo json_encode(['success' => false, 'message' => '缺少必要参数']);
+    exit;
+}
+
+// 首先在数据库中创建任务记录
+$db = new DB();
+$pdo = $db->getConnection();
+$ip = getClientIP();
+
+try {
+    $stmt = $pdo->prepare("INSERT INTO analysis_tasks 
+                          (task_id, user_id, task_name, cancer_type, status, submitted_at, ip_address) 
+                          VALUES (?, ?, ?, ?, ?, datetime('now'), ?)");
+    $stmt->execute([
+        $taskId, 
+        $userId, 
+        $taskName, 
+        $cancerType, // 添加癌种类型
+        'queued', 
+        $ip
+    ]);
+    
+    // 准备发送给pyserver的数据
+    $postData = [
+        'user_id' => $userId,
+        'task_id' => $taskId,
+        'task_name' => $taskName,
+        'cancer_type' => $cancerType, // 添加癌种类型
+        'timestamp' => time()
+    ];
+
+    // 初始化cURL会话
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'http://localhost:5001/submit');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10); // 10秒超时
+
+    // 执行请求
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $error = curl_error($ch);
+    curl_close($ch);
+
+    // 处理响应
+    if ($httpCode >= 200 && $httpCode < 300) {
+        $result = json_decode($response, true);
+        echo $response;
+    } else {
+        // 如果发送到pyserver失败，更新任务状态为失败
+        $errorMsg = $error ?: "HTTP状态码 {$httpCode}";
+        $stmt = $pdo->prepare("UPDATE analysis_tasks SET status = 'failed' WHERE task_id = ?");
+        $stmt->execute([$taskId]);
+        
+        echo json_encode([
+            'success' => false,
+            'message' => '分析服务不可用: ' . $errorMsg
+        ]);
+    }
+} catch (PDOException $e) {
+    echo json_encode([
+        'success' => false,
+        'message' => '数据库操作失败: ' . $e->getMessage()
+    ]);
+}

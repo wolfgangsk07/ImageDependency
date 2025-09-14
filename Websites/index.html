@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Dependency | Digital Cancer Vulnerability Profiling</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        document.write("<link rel='stylesheet' type='text/css' href='css/index.css'>");
+	</script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="logo.svg" alt="AADA Logo">
+                    <h1>Image Dependency</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#citation">Citation</a></li>
+					<li><a href="https://github.com/wolfgangsk07/ImageDependency.git">GitHub Repository</a></li>
+                    <li><a href="analysis.html" class="cta-button">Use Analysis Tool</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Digital profiling of pan-cancer vulnerability maps from routine histopathology with agent attention</h2>
+                <p>Transform routine H&E slides into actionable cancer vulnerability maps with AADA - our AI framework that predicts therapeutic responses, molecular subtypes, and clinical outcomes without costly genomic sequencing.</p>
+				<div class="hero-buttons">
+                    <a href="analysis.html" class="btn btn-primary">Start Analysis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Overview</h2>
+            </div>
+            
+            <img src=overview1.svg>
+			<img src=overview2.svg>
+        </div>
+    </section>
+
+    
+
+    <!-- Citation Section -->
+    <section class="citation" id="citation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Citation</h2>
+                <p>Reference our work in your research</p>
+            </div>
+            
+            <div class="citation-box">
+                <p>Digital profiling of pan-cancer vulnerability maps from routine histopathology with agent attention. <em>XXXXXX</em>, 0(0), 0000-0000.</p>
+                <p><strong>Authors:</strong> Dongyi Wan, Tongtong Liu, Zhao Huang, Wanguang Zhang, Ganxun Li</p>
+                <p><strong>Abstract:</strong> Although cancer genomics consortia (e.g., TCGA, DepMap) have accelerated the identification of oncogenic vulnerabilities, translating molecular dependencies into clinically actionable strategies remains impeded by prohibitively costly multi-omics workflows and reductionist models that fail to capture dynamic tumor microenvironment pathophysiology. We introduce AADA, a deep learning framework that generates actionable therapeutic dependency maps using only routine H&E-stained whole-slide images. Trained on 7,513 tumor samples spanning 22 cancer types, AADA demonstrates cross-cohort generalizability, with rigorous validation in an independent cohort (n = 815 tumors). AADA identifies tumor vulnerabilities enabling simultaneous prediction of drug responses, reproduction of TCGA molecular subtypes, and prognostic stratification. By integrating gene-tolerance mapping learned from normal tissue histopathology, we prioritize therapeutically exploitable vulnerabilities to maximize therapeutic indices. Implemented as an open-access web application, this pathology AI platform enables real-time, sequencing-free dependency mapping, providing clinically actionable vulnerability roadmaps for point-of-care oncology decision support.</p>
+                
+                <p><strong>DOI:</strong> xxxx/xxxx</p>
+                
+                <p><strong>URL:</strong> https://doi.org/xxx</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AADA Framework</h3>
+                    <p>Transforming precision oncology through computational pathology and deep learning.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#overview">Research Overview</a></li>
+                        <li><a href="#citation">Citation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga">TCGA</a></li>
+                        <li><a href="https://gdc.cancer.gov/about-gdc/contributed-genomic-data-cancer-research/clinical-proteomic-tumor-analysis-consortium-cptac">CPTAC</a></li>
+                        <li><a href="https://gtexportal.org/home/">GTEx</a></li>
+                        <li><a href="https://github.com/wolfgangsk07/ImageDependency.git">GitHub Repository</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> wandongyi1988@qq.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> XXXXXXXX</li>
+                        <li><i class="fas fa-university"></i> XXXXXXXXXXXXX</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 LiGanXunLab Research Group. All Rights Reserved. | Digital profiling of pan-cancer vulnerability maps from routine histopathology with agent attention</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navigation bar scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                header.style.backgroundColor = 'rgba(255,255,255,0.95)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                header.style.backgroundColor = 'white';
+            }
+        });
+    </script>
+</body>
+</html>

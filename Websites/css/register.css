@@ -1,0 +1,329 @@
+/* ===================== 模态框样式 ===================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+	
+}
+
+.user-auth {
+    padding-right: 20px; 
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+    width: 450px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalFade 0.4s ease-out;
+}
+
+@keyframes modalFade {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h2 {
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary);
+    color: var(--dark);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* ===================== 表单样式 ===================== */
+#modalForm {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+#modalForm input {
+    padding: 16px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+#modalForm input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+#modalForm button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+#modalForm button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.35);
+}
+
+#sendCodeBtn {
+    background-color: var(--secondary) !important;
+    padding: 14px 20px !important;
+    margin-top: 0 !important;
+}
+
+#sendCodeBtn:hover {
+    background-color: #243342 !important;
+}
+
+/* ===================== 响应式调整 ===================== */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+    }
+    
+    #modalForm {
+        padding: 25px;
+    }
+    
+    #modalForm input {
+        padding: 14px;
+    }
+    
+    #modalForm button {
+        padding: 14px;
+    }
+}
+
+/* 模态框样式增强 */
+.modal-content {
+    width: 90%;
+    max-width: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.form-group {
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+}
+
+.password-strength {
+    margin-top: 8px;
+}
+
+.strength-bar {
+    height: 5px;
+    width: 100%;
+    background: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 3px;
+}
+
+.strength-bar::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0;
+    transition: width 0.3s;
+}
+
+.strength-bar.weak::before {
+    width: 30%;
+    background: #e74c3c;
+}
+
+.strength-bar.medium::before {
+    width: 65%;
+    background: #f39c12;
+}
+
+.strength-bar.strong::before {
+    width: 100%;
+    background: #2ecc71;
+}
+
+.strength-text {
+    font-size: 12px;
+    color: #777;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.form-agreement {
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.form-agreement label {
+    display: flex;
+    align-items: flex-start; /* 顶部对齐 */
+    gap: 10px;
+    cursor: pointer;
+    line-height: 1.5;
+}
+.form-agreement input[type="checkbox"] {
+    width: auto !important;
+    !height: 18px !important;
+    margin: 0 !important;
+    display: inline-block;
+    flex-shrink: 0; /* 防止复选框被压缩 */
+    margin-top: 4px; /* 微调垂直位置 */
+}
+.agreement-text {
+    display: block; /* 使文本块级元素 */
+    line-height: 1.6;
+}
+.form-agreement a {
+    display: inline; /* 确保链接在同一行内 */
+    white-space: nowrap; /* 防止链接内换行 */
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.form-agreement a:hover {
+    text-decoration: underline;
+    color: #2980b9;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.auth-btn:hover {
+    background: #2980b9;
+}
+
+.send-code-btn {
+    width: 100%;
+    padding: 10px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    background: #fef2f2;
+    color: #e74c3c;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.register-description {
+  color: #6c757d;
+  margin-bottom: 15px;
+  text-align: center;
+}
