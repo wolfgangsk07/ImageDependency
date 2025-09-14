@@ -169,9 +169,8 @@ This script performs transcriptional profile alignment between CPTAC tumor sampl
 ## build_model_predict_CPTACDEPMAP.R
 This script trains elastic-net models to predict gene essentiality scores (from DepMap) using aligned expression data. Models are trained on cell lines and applied to tumor samples to infer pathway dependencies.
 
-### Dependencies
-**R Packages:** glmnet, parallel, rlist  
-**Input Files:**  
+
+### Input Files
 - Aligned expression: `./data/aligned_expression_DEPMAP.rds` (from previous script)  
 - Gene essentiality: `./data/Achilles_gene_effect.csv` (DepMap)  
 - Gene mappings: `./src/ensemble_mapping.txt`, `./src/cv_validated_genelist.txt`  
