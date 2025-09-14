@@ -19,6 +19,32 @@ Subsequent Columns: Gene expression values (one column per gene)
 Headers: Gene names
 Example:
 ```
+patient_id,GeneA,GeneB,...
+patient_1,0.84,1.2,...
+patient_2,0.91,0.75,...
+...
+
+```
+
+2. Feature Files
+Directory:
+
+/yourworkspace/data/result/cluster/{extraction_model}/{cancer_type}/
+
+(Substitute {extraction_model} (e.g., vit, resnet) and {cancer_type})
+
+Requirements:
+
+Per-Patient Files: One file per patient (named {patient_id}.h5).
+Contents: Each .h5 file must contain a feature array of shape [num_clusters, feature_dim].
+num_clusters: Number of superpixel clusters (e.g., 900).
+feature_dim: Dimensionality of extracted features (e.g., 1024 for ViT).
+Consistency: All files must use identical feature_dim and storage format.
+
+3. Directory Structure
+Organize directories as follows under /yourworkspace:
+
+```
 data/
 ├── reference/
 │   └── dependency/               # Reference CSVs
