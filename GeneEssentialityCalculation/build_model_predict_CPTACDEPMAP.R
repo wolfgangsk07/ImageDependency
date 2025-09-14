@@ -75,4 +75,4 @@ tissue_ess_data = list.rbind(tissue_ess)
 dim(tissue_ess_data)
 row.names(tissue_ess_data)
 #1966 1659
-#saveRDS(tissue_ess_data,file="./data/CPTAC_essentiality_scores.rds")
+saveRDS(tissue_ess_data,file="./data/CPTAC_essentiality_scores.rds")
