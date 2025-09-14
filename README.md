@@ -1,7 +1,9 @@
 # Project Workflow
 
 ## 1. Training
+(Coming soon)
 ## 2. Evaluating
+(Coming soon)
 ## 3. Predicting
 
 All predicting processes are implemented in a single Python script svsToExpr.py:  
