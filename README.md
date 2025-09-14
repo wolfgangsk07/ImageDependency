@@ -101,15 +101,15 @@ Generated in **`/yourworkspace/data/result/model/<extraction_model>/<prediction_
 
 Matrices:
 
-real_expression_matrix.csv - Ground truth expression
+*real_expression_matrix.csv - Ground truth expression*
 
-pred_expression_matrix.csv - Model predictions
+*pred_expression_matrix.csv - Model predictions*
 
 Analysis Results:
 
-all_genes.csv - Full analysis for all genes (columns described below)
+*all_genes.csv - Full analysis for all genes (columns described below)*
 
-sig_genes.csv - Statistically significant genes subset
+*sig_genes.csv - Statistically significant genes subset*
 
 CSV Columns (all_genes.csv):
 
