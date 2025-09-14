@@ -1,7 +1,7 @@
 ### This script is used to build elastic-net model to predict gene essentiality scores
 rm(list=ls())
 datapath="./"
-setwd("/yourworkspace/script/CPTAC_dependency/")
+setwd("/yourworkspace/")
 
 ## preprocess depmap gene essentiality data available at depmap portal
 gene_effect_21Q1 = read.delim("./data/Achilles_gene_effect.csv",sep=",",header=T) ### gene effect file available at DEPMAP portal
@@ -75,4 +75,4 @@ tissue_ess_data = list.rbind(tissue_ess)
 dim(tissue_ess_data)
 row.names(tissue_ess_data)
 #1966 1659
-saveRDS(tissue_ess_data,file="./data/CPTAC_essentiality_scores.rds")
+saveRDS(tissue_ess_data,file="./data/essentiality_scores.rds")

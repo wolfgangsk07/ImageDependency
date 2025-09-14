@@ -187,15 +187,15 @@ This script trains elastic-net models to predict gene essentiality scores (from 
    - Parallelized across 50 CPU cores (`mclapply`)  
 
 3. **Prediction on Tumor Samples**  
-   Apply trained models to predict essentiality scores for CPTAC tumors  
+   Apply trained models to predict essentiality scores for tumors  
    Generate tumor-specific essentiality matrix  
 
 4. **Output**  
-   Save predicted scores as `./data/CPTAC_essentiality_scores.rds`  
+   Save predicted scores as `./data/essentiality_scores.rds`  
 
 ### Usage
 Place input files in `./data/` and `./src/`  
-Run script. Output: `CPTAC_essentiality_scores.rds` (genes × tumors matrix)  
+Run script. Output: `essentiality_scores.rds` (genes × tumors matrix)  
 
 # 5. Website Implementation
 This repository contains the source code for:  

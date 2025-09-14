@@ -6,7 +6,7 @@
 ### This code is tested under Seurat 4.4.0. Please uncomment line 121 in src/Celligner_methods.R if you are using Seurat v5 or later
 #设置禁用线程的配置参数：
 rm(list = ls())
-setwd("/yourworkspace/script/CPTAC_dependency/")
+setwd("/yourworkspace/")
 source("src/Celligner_methods.R") ### Please restart R if you see error this line
 
 ### This code is tested under Seurat 4.4.0. Please uncomment line 121 in src/Celligner_methods.R if you are using Seurat v5 or later
