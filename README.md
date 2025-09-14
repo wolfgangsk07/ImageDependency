@@ -7,7 +7,9 @@ This document outlines the required data files and directory structure for runni
 ### 1. Reference CSV File
 Path:
 
-**`/backup/lgx/path_omics_t/data/reference/dependency/{cancer_type}_ref.csv`**
+Assume your workspace is in /yourworkspace
+
+**`/yourworkspace/data/reference/dependency/{cancer_type}_ref.csv`**
 
 (Replace {cancer_type} with your target cancer type, e.g., BLCA_ref.csv)
 
