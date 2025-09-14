@@ -4,14 +4,11 @@
 ## 2. Evaluating
 ## 3. Predicting
 
-All three processes are implemented in a single Python script svsToExpr.py:  
+All predicting processes are implemented in a single Python script svsToExpr.py:  
 **`
 from svsToExpr import process_svs_to_expression
 result=process_svs_to_expression("./","test.svs","BRCA")
 `**
-
-We provide a demonstration script showing how to use the workflow:  
-**`demo.py`**
 
 ---
 
