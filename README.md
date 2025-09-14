@@ -7,7 +7,7 @@
 (Coming soon)
 ## 3. Predicting
 
-All predicting processes are implemented in a single Python script svsToExpr.py.
+All predicting processes are implemented in a single Python script svsToExpr.py:
 
 ```
 from svsToExpr import process_svs_to_expression
