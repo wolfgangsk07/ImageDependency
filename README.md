@@ -14,11 +14,11 @@ This document outlines the required data files and directory structure for runni
 
 Format:
 
-First Column: patient_id (unique patient identifier)
+*First Column: patient_id (unique patient identifier)*
 
-Subsequent Columns: Gene expression values (one column per gene)
+*Subsequent Columns: Gene expression values (one column per gene)*
 
-Headers: Gene names
+*Headers: Gene names*
 
 Example:
 
@@ -33,21 +33,21 @@ patient_2,0.91,0.75,...
 ### 2. Feature Files
 Directory:
 
-/yourworkspace/data/result/cluster/{extraction_model}/{cancer_type}/
+**`/yourworkspace/data/result/cluster/{extraction_model}/{cancer_type}/`**
 
 (Substitute {extraction_model} (e.g., vit, resnet) and {cancer_type})
 
 Requirements:
 
-Per-Patient Files: One file per patient (named {patient_id}.h5).
+*Per-Patient Files: One file per patient (named {patient_id}.h5).*
 
-Contents: Each .h5 file must contain a feature array of shape [num_clusters, feature_dim].
+*Contents: Each .h5 file must contain a feature array of shape [num_clusters, feature_dim].*
 
-num_clusters: Number of superpixel clusters (e.g., 900).
+*num_clusters: Number of superpixel clusters (e.g., 900).*
 
-feature_dim: Dimensionality of extracted features (e.g., 1024 for ViT).
+*feature_dim: Dimensionality of extracted features (e.g., 1024 for ViT).*
 
-Consistency: All files must use identical feature_dim and storage format.
+*Consistency: All files must use identical feature_dim and storage format.*
 
 ### 3. Directory Structure
 Organize directories as follows under /yourworkspace:
@@ -78,9 +78,10 @@ This script analyzes predictive performance of gene expression models using mult
 ### 1. Input Data Requirements
 Core Input File:
 
-test_results.pkl (Generated from Training step).
+**`test_results.pkl`** (Generated from Training step).
 
-Located at: /yourworkspace/data/result/model/<extraction_model>/<prediction_type>/<cancer_type>/test_results.pkl
+Located at:
+**`/yourworkspace/data/result/model/<extraction_model>/<prediction_type>/<cancer_type>/test_results.pkl`**
 
 ### 2. Directory Structure Requirements
 ```
