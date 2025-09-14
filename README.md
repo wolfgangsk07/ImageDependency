@@ -64,7 +64,58 @@ script/                           # Source code modules (provided)
 
 ```
 ## 2. Evaluating
-(Coming soon)
+This script analyzes predictive performance of gene expression models using multi-fold cross-validation results. It computes correlation metrics, statistical significance, and error measurements to evaluate model performance against random baselines.
+####1. Input Data Requirements
+Core Input File:
+
+test_results.pkl (Generated from Training step).
+
+Located at: /yourworkspace/data/result/model/<extraction_model>/<prediction_type>/<cancer_type>/test_results.pkl
+
+####2. Directory Structure Requirements
+```
+/yourworkspace/
+├── data/
+│   └── result/
+│       └── model/
+│           └── <extraction_model>/  # e.g., 'vit' or 'resnet'
+│               └── <prediction_type>/  # e.g., 'tformer_lin'
+│                   └── <cancer_type>/  # e.g., 'BLCA'
+│                       ├── test_results.pkl  # Input file
+│                       └── result/  # Auto-created output directory
+
+```
+####3. Output Files
+Generated in .../cancer_type/result/ directory:
+
+Matrices:
+
+real_expression_matrix.csv - Ground truth expression
+pred_expression_matrix.csv - Model predictions
+Analysis Results:
+
+all_genes.csv - Full analysis for all genes (columns described below)
+sig_genes.csv - Statistically significant genes subset
+Diagnostic Files:
+
+analysis_report.txt - Performance summary report
+{cancer}_{type}_analysis_{timestamp}.log - Execution log
+{type}_temp_results.csv - Intermediate results (if interrupted)
+CSV Columns (all_genes.csv):
+
+Column	Description
+pred_real_r	Pearson r (predictions vs ground truth)
+random_real_r	Pearson r (random vs ground truth)
+pearson_p	P-value for prediction correlation
+Steiger_p	P-value for prediction vs. random comparison
+rmse_pred	RMSE of predictions
+rmse_random	RMSE of random baseline
+rmse_quantile_norm	IQR-normalized RMSE
+rmse_mean_norm	Mean-normalized RMSE
+fdr_pearson_p	FDR-corrected Pearson p-value
+fdr_Steiger_p	FDR-corrected Steiger p-value
+cancer	Cancer type identifier
+
 ## 3. Predicting
 
 All predicting processes are implemented in a single Python script svsToExpr.py:
