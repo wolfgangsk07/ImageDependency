@@ -97,7 +97,7 @@ Located at:
 
 ```
 ### 3. Output Files
-Generated in .../cancer_type/result/ directory:
+Generated in **`/yourworkspace/data/result/model/<extraction_model>/<prediction_type>/<cancer_type>/result/`** directory:
 
 Matrices:
 
