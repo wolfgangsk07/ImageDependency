@@ -1,12 +1,22 @@
-1.Training
+# Project Workflow
 
-2.Evaluating
+## 1. Training
+## 2. Evaluating
+## 3. Predicting
 
-3.Predicting
-Processes are packed into one python script svsToExpr.py.
-Here we offered a demo demo.py, to show how it works.
+All three processes are implemented in a single Python script:  
+**`svsToExpr.py`**
 
-4.Website
+We provide a demonstration script showing how to use the workflow:  
+**`demo.py`**
 
-This is the source code of https://www.hbpding.com/ImageDependency/.
-It is recommend to deposite this server on apache2 on debian, with python3 available in environment.
+---
+
+## 4. Website Implementation
+
+This repository contains the source code for:  
+**https://www.hbpding.com/ImageDependency/**
+
+### Deployment Recommendations
+- **Server**: Apache2 on Debian
+- **Environment**: Python3 required
