@@ -65,14 +65,14 @@ script/                           # Source code modules (provided)
 ```
 ## 2. Evaluating
 This script analyzes predictive performance of gene expression models using multi-fold cross-validation results. It computes correlation metrics, statistical significance, and error measurements to evaluate model performance against random baselines.
-####1. Input Data Requirements
+#### 1. Input Data Requirements
 Core Input File:
 
 test_results.pkl (Generated from Training step).
 
 Located at: /yourworkspace/data/result/model/<extraction_model>/<prediction_type>/<cancer_type>/test_results.pkl
 
-####2. Directory Structure Requirements
+#### 2. Directory Structure Requirements
 ```
 /yourworkspace/
 ├── data/
@@ -85,7 +85,7 @@ Located at: /yourworkspace/data/result/model/<extraction_model>/<prediction_type
 │                       └── result/  # Auto-created output directory
 
 ```
-####3. Output Files
+#### 3. Output Files
 Generated in .../cancer_type/result/ directory:
 
 Matrices:
@@ -103,18 +103,20 @@ analysis_report.txt - Performance summary report
 {type}_temp_results.csv - Intermediate results (if interrupted)
 CSV Columns (all_genes.csv):
 
-Column	Description
-pred_real_r	Pearson r (predictions vs ground truth)
-random_real_r	Pearson r (random vs ground truth)
-pearson_p	P-value for prediction correlation
-Steiger_p	P-value for prediction vs. random comparison
-rmse_pred	RMSE of predictions
-rmse_random	RMSE of random baseline
-rmse_quantile_norm	IQR-normalized RMSE
-rmse_mean_norm	Mean-normalized RMSE
-fdr_pearson_p	FDR-corrected Pearson p-value
-fdr_Steiger_p	FDR-corrected Steiger p-value
-cancer	Cancer type identifier
+| Column             | Description                                  |
+|--------------------|----------------------------------------------|
+| pred_real_r        | Pearson r (predictions vs ground truth)      |
+| random_real_r      | Pearson r (random vs ground truth)           |
+| pearson_p          | P-value for prediction correlation           |
+| Steiger_p          | P-value for prediction vs. random comparison |
+| rmse_pred          | RMSE of predictions                          |
+| rmse_random        | RMSE of random baseline                      |
+| rmse_quantile_norm | IQR-normalized RMSE                          |
+| rmse_mean_norm     | Mean-normalized RMSE                         |
+| fdr_pearson_p      | FDR-corrected Pearson p-value                |
+| fdr_Steiger_p      | FDR-corrected Steiger p-value                |
+| cancer             | Cancer type identifier                       |
+
 
 ## 3. Predicting
 
