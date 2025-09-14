@@ -91,16 +91,23 @@ Generated in .../cancer_type/result/ directory:
 Matrices:
 
 real_expression_matrix.csv - Ground truth expression
+
 pred_expression_matrix.csv - Model predictions
+
 Analysis Results:
 
 all_genes.csv - Full analysis for all genes (columns described below)
+
 sig_genes.csv - Statistically significant genes subset
+
 Diagnostic Files:
 
 analysis_report.txt - Performance summary report
+
 {cancer}_{type}_analysis_{timestamp}.log - Execution log
+
 {type}_temp_results.csv - Intermediate results (if interrupted)
+
 CSV Columns (all_genes.csv):
 
 | Column             | Description                                  |
