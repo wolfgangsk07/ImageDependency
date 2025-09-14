@@ -4,10 +4,9 @@
 # 1. Training
 This document outlines the required data files and directory structure for running the gene expression prediction training script. Ensure the following files and directories are properly prepared before execution.
 
-### 1. Reference CSV File
-Path:
+(Assume your workspace is in /yourworkspace)
 
-Assume your workspace is in /yourworkspace
+### 1. Reference CSV File
 
 **`/yourworkspace/data/reference/dependency/{cancer_type}_ref.csv`**
 
@@ -16,9 +15,13 @@ Assume your workspace is in /yourworkspace
 Format:
 
 First Column: patient_id (unique patient identifier)
+
 Subsequent Columns: Gene expression values (one column per gene)
+
 Headers: Gene names
+
 Example:
+
 ```
 patient_id,GeneA,GeneB,...
 patient_1,0.84,1.2,...
@@ -37,9 +40,13 @@ Directory:
 Requirements:
 
 Per-Patient Files: One file per patient (named {patient_id}.h5).
+
 Contents: Each .h5 file must contain a feature array of shape [num_clusters, feature_dim].
+
 num_clusters: Number of superpixel clusters (e.g., 900).
+
 feature_dim: Dimensionality of extracted features (e.g., 1024 for ViT).
+
 Consistency: All files must use identical feature_dim and storage format.
 
 ### 3. Directory Structure
@@ -65,7 +72,9 @@ script/                           # Source code modules (provided)
 
 ```
 # 2. Evaluating
+
 This script analyzes predictive performance of gene expression models using multi-fold cross-validation results. It computes correlation metrics, statistical significance, and error measurements to evaluate model performance against random baselines.
+
 ### 1. Input Data Requirements
 Core Input File:
 
