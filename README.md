@@ -128,12 +128,12 @@ result = process_svs_to_expression("./", "test.svs", "BRCA")
 
 # 4. GeneEssentialityCalculation
 
-## run_expression_alignment_CPTACDEPMAP.R
-This script performs transcriptional profile alignment between CPTAC tumor samples and DepMap cell lines using methods adapted from Celligner. Key steps include quantile normalization, initial clustering, differential gene analysis, contrastive PCA (cPCA), and Mutual Nearest Neighbors (MNN) correction. The output is an integrated gene expression matrix for downstream analysis.
+## run_expression_alignment_DEPMAP.R
+This script performs transcriptional profile alignment between tumor samples and DepMap cell lines using methods adapted from Celligner. Key steps include quantile normalization, initial clustering, differential gene analysis, contrastive PCA (cPCA), and Mutual Nearest Neighbors (MNN) correction. The output is an integrated gene expression matrix for downstream analysis.
 
 
 ### Input Files
-- Tumor data: `./data/pancan_merged_CPTAC_RNAseq_Tumor.tsv`  
+- Tumor data: `./data/pancan_merged_RNAseq_Tumor.tsv`  
 - Cell line data: `./data/CCLE_expression_full.csv` (DepMap)  
 - Gene annotation: `./hgnc_complete_set_7.24.2018.txt`  
 
@@ -141,7 +141,7 @@ This script performs transcriptional profile alignment between CPTAC tumor sampl
 
 ### Workflow
 1. **Data Loading & Preprocessing**  
-   - Load tumor (CPTAC) and cell line (DepMap) expression matrices and metadata  
+   - Load tumor and cell line (DepMap) expression matrices and metadata  
    - Merge datasets and apply quantile normalization (`normalize.quantiles`)  
 
 2. **Initial Clustering**  
@@ -164,7 +164,7 @@ This script performs transcriptional profile alignment between CPTAC tumor sampl
 2. Ensure input files exist in `./data/`  
 3. Run script. Output: `aligned_expression_DEPMAP.rds` (RDS object)  
 
-## build_model_predict_CPTACDEPMAP.R
+## build_model_predict_DEPMAP.R
 This script trains elastic-net models to predict gene essentiality scores (from DepMap) using aligned expression data. Models are trained on cell lines and applied to tumor samples to infer pathway dependencies.
 
 
